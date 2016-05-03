@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			// 扩展API是否准备好，如果没有则监听“plusready"事件
+			if (window.plus) {
+				plusReady();
+			} else {
+				document.addEventListener("plusready", plusReady, false);
+			}
+			// 扩展API准备完成后要执行的操作
+			function plusReady() {
+				var ws = plus.webview.currentWebview(); //pw回车可输出plus.webview
+				// ... code
+			}
+			
+			function openWindow() {
+				debugger;
+				var url = "http://www.baidu.com";
+				plus.webview.create(url).show();
+			}
+		</script>
+	</head>
+
+	<body>
+			hello world<br />
+			<input type="button" value="打开一个窗口" onclick="openWindow();" />
+	</body>
+
+</html>
