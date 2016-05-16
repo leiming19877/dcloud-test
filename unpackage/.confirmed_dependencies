@@ -1,8 +1,10 @@
 {
-  "index.html": {
-    "resources": [
-      "js/mui.min.js",
-      "css/mui.min.css"
-    ]
-  }
+	"index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"js/seajs/sea-all.js",
+			"js/mui/mui.js"
+		]
+	}
 }

@@ -402,8 +402,8 @@ var mui = (function(document, undefined) {
 	/**
 	 * 兼容 AMD 模块
 	 **/
-	if (typeof define === 'function' && define.amd) {
-		define('mui', [], function() {
+	if (typeof define === 'function' && (define.amd || define.cmd)) {
+		define(function() {
 			return $;
 		});
 	}
