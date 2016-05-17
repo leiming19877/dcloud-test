@@ -4,16 +4,10 @@
 		  return
 		}
 	 var seajs  = global.seajs;
-	 seajs.config({
-	        base: '/js/', //基础路径
+	  seajs.config({
 	        alias: { 
-	        	'jquery':'jquery/2.1.1/jquery-2.1.1.min.js',
-	        	'jquery-mobile':'jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js',
 	            'zepto': 'zepto/zepto.min.js',
-	            'dot':'doT/doT.min.js',
-	            'iscroll':'iscroll/iscroll-4.2.js',
-	            'jweixin':'weixin/jweixin-1.1.0.js',
-	            'director':'director/director.js'
+	            'mui':'mui/mui.js'
 	            },
 	        preload: [
 	                 ],//预先加载
@@ -23,4 +17,11 @@
 	        charset: 'utf-8', // 文件编码
 	        debug:true
 	    });
+	   //基础路径
+	   var userAgent = navigator.userAgent;
+	   if(userAgent.indexOf("Html5Plus")  !== -1 ){
+	   	 seajs.config({base: '../www/js'});
+	   }else{
+	   	  seajs.config({base:'/dcloud-test/js'}); 
+	   }
  })(this);

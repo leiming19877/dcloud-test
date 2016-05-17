@@ -338,7 +338,10 @@ else {
       // see http://msdn.microsoft.com/en-us/library/ms536429(VS.85).aspx
       node.getAttribute("src", 4)
   }
+
   loaderPath = getScriptAbsoluteSrc(loaderScript)
+  //替换到seajs路径为空，以方便定位
+  loaderPath = loaderPath.replace(/\/seajs/,'')
   // When `sea.js` is inline, set loaderDir to current working directory
   loaderDir = dirname(loaderPath || cwd)
 }
@@ -1161,7 +1164,6 @@ data.charset = "utf-8"
 // data.debug - Debug mode. The default value is false
 
 seajs.config = function(configData) {
-
   for (var key in configData) {
     var curr = configData[key]
     var prev = data[key]
@@ -1203,15 +1205,9 @@ seajs.config = function(configData) {
 		}
 	 var seajs  = global.seajs;
 	 seajs.config({
-	        base: '../www/js', //基础路径
-	        alias: { 
-	        	'jquery':'jquery/2.1.1/jquery-2.1.1.min.js',
-	        	'jquery-mobile':'jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js',
+	         alias: { 
 	            'zepto': 'zepto/zepto.min.js',
-	            'dot':'doT/doT.min.js',
-	            'iscroll':'iscroll/iscroll-4.2.js',
-	            'jweixin':'weixin/jweixin-1.1.0.js',
-	            'director':'director/director.js'
+	            'mui':'mui/mui.js'
 	            },
 	        preload: [
 	                 ],//预先加载
@@ -1221,9 +1217,12 @@ seajs.config = function(configData) {
 	        charset: 'utf-8', // 文件编码
 	        debug:true
 	    });
+	   //基础路径
 	   var userAgent = navigator.userAgent;
-	   if(userAgent.indexOf("Html5Plus")  == -1 ){
-	   	 seajs.config({base:'../js'})
+	   if(userAgent.indexOf("Html5Plus")  !== -1 ){
+	   	 //seajs.config({base: 'www/js'});
+	   }else{
+	   	  seajs.config({base:'/dcloud-test/js'}); 
 	   }
  })(this);
 

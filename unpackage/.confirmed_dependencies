@@ -4,7 +4,34 @@
 			"js/mui.min.js",
 			"css/mui.min.css",
 			"js/seajs/sea-all.js",
-			"js/mui/mui.js"
+			"js/mui/mui.js",
+			"fonts/mui.ttf",
+			"html/function-list.html"
+		],
+		"refer": [
+			"html/function-list.html",
+			"html/function-list/function-list.html"
+		]
+	},
+	"html/function-list.html": {
+		"resources": [
+			"html/baidu-map.html"
+		],
+		"refer": [
+			"html/baidu-map.html"
+		]
+	},
+	"html/function-list/function-list.html": {
+		"resources": [
+			"html/baidu-map/baidu-map.html",
+			"fonts/mui.ttf",
+			"js/seajs/sea-all.js",
+			"css/mui.min.css",
+			"js/mui/mui.js",
+			"js/module/function-list/function-list.js"
+		],
+		"refer": [
+			"html/baidu-map/baidu-map.html"
 		]
 	}
 }

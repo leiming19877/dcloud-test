@@ -339,6 +339,8 @@ else {
       node.getAttribute("src", 4)
   }
   loaderPath = getScriptAbsoluteSrc(loaderScript)
+  //替换到seajs路径为空，以方便定位上seajs上一级目录
+  loaderPath = loaderPath.replace(/\/seajs/,'')
   // When `sea.js` is inline, set loaderDir to current working directory
   loaderDir = dirname(loaderPath || cwd)
 }

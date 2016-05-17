@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title></title>
+		<title>Map Example</title>
+		<script type="text/javascript">
+			var em = null,
+				map = null;
+			// H5 plus事件处理
+			function plusReady() {
+				// 确保DOM解析完成
+				if (!em || !window.plus || map) {
+					return
+				};
+				map = new plus.maps.Map("map");
+			}
+			if (window.plus) {
+				plusReady();
+			} else {
+				document.addEventListener("plusready", plusReady, false);
+			}
+			// DOMContentloaded事件处理
+			document.addEventListener("DOMContentLoaded", function() {
+				em = document.getElementById("map");
+				plusReady();
+			}, false);
+		</script>
+		<style type="text/css">
+			#map {
+				width: 100%;
+				position: fixed;
+				top: 0px;
+				bottom: 0px;
+				line-height: 200px;
+				text-align: center;
+				background: #FFFFFF;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="map">地图加载中...</div>
+	</body>
+
+</html>

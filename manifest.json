@@ -231,7 +231,30 @@
 					"js/mui.min.js",
 					"css/mui.min.css",
 					"js/seajs/sea-all.js",
-					"js/mui/mui.js"
+					"js/mui/mui.js",
+					"fonts/mui.ttf",
+					"html/function-list.html"
+				],
+				"refer": [
+					"html/function-list/function-list.html"
+				],
+				"priority": 0
+			},
+			"html/function-list.html": {
+				"resources": [
+					"html/baidu-map.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/function-list/function-list.html": {
+				"resources": [
+					"html/baidu-map/baidu-map.html",
+					"fonts/mui.ttf",
+					"js/seajs/sea-all.js",
+					"css/mui.min.css",
+					"js/mui/mui.js",
+					"js/module/function-list/function-list.js"
 				],
 				"refer": [],
 				"priority": 0
@@ -239,7 +262,6 @@
 		},
 		"idle": {
 			"resources": [
-				"fonts/mui.ttf",
 				"js/mui.js",
 				"css/mui.css"
 			]

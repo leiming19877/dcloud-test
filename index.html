@@ -6,40 +6,38 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title></title>
 		<link href="css/mui.min.css" rel="stylesheet" />
-		<script type="text/javascript" id="seajsnode" src="js/seajs/sea-all.js"></script>
-	    <script type="text/javascript" charset="utf-8">
-	        //加载主模板块
-	        seajs.use("mui/mui.js",function(mui){
-				  mui.init();
-				  // 扩展API是否准备好，如果没有则监听“plusready"事件
-				if (window.plus) {
-					plusReady();
-				} else {
-					document.addEventListener("plusready", plusReady, false);
-				}
-				// 扩展API准备完成后要执行的操作
-				function plusReady() {
-					var ws = plus.webview.currentWebview(); //pw回车可输出plus.webview
-					// ... code
-				}
-			
-		
-	        });
-        	function openWindow() {
-			debugger;
-			var url = "http://www.baidu.com";
-			plus.webview.create(url).show();
-		}
-	    </script>
-		<script type="text/javascript" charset="utf-8">
-			mui.init();
-			
-		</script>
 	</head>
 
 	<body>
-			hello world<br />
-			<input type="button" value="打开一个窗口" onclick="openWindow();" />
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">功能列表</h1>
+		</header>
 	</body>
+<script type="text/javascript" id="seajsnode" src="js/seajs/sea-all.js"></script>
+	    <script type="text/javascript" charset="utf-8">
+	        //加载主模板块
+	        seajs.use("mui",function(mui){
+				mui.init({
+					swipeBack: false,
+					statusBarBackground: '#f7f7f7',
+					gestureConfig: {
+						doubletap: true
+					},
+					subpages: [{
+						id: 'function-list',
+						url: 'html/function-list/function-list.html',
+						styles: {
+							top: '45px',
+							bottom: 0,
+							bounce: 'vertical'
+						}
+					}]
+				});
+			
+		
+	        });
+    
 
+	    </script>
 </html>
