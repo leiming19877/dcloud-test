@@ -1,37 +1,63 @@
 {
-	"index.html": {
-		"resources": [
-			"js/mui.min.js",
-			"css/mui.min.css",
-			"js/seajs/sea-all.js",
-			"js/mui/mui.js",
-			"fonts/mui.ttf",
-			"html/function-list.html"
-		],
-		"refer": [
-			"html/function-list.html",
-			"html/function-list/function-list.html"
-		]
-	},
-	"html/function-list.html": {
-		"resources": [
-			"html/baidu-map.html"
-		],
-		"refer": [
-			"html/baidu-map.html"
-		]
-	},
-	"html/function-list/function-list.html": {
-		"resources": [
-			"html/baidu-map/baidu-map.html",
-			"fonts/mui.ttf",
-			"js/seajs/sea-all.js",
-			"css/mui.min.css",
-			"js/mui/mui.js",
-			"js/module/function-list/function-list.js"
-		],
-		"refer": [
-			"html/baidu-map/baidu-map.html"
-		]
-	}
+  "index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/seajs/sea-all.js",
+      "js/mui/mui.js",
+      "fonts/mui.ttf",
+      "html/function-list.html",
+      "html/function-list/function-list.html"
+    ],
+    "refer": [
+      "html/function-list.html",
+      "html/function-list/function-list.html"
+    ]
+  },
+  "html/function-list.html": {
+    "resources": [
+      "html/baidu-map.html"
+    ],
+    "refer": [
+      "html/baidu-map.html"
+    ]
+  },
+  "html/function-list/function-list.html": {
+    "resources": [
+      "html/baidu-map/baidu-map.html",
+      "fonts/mui.ttf",
+      "js/seajs/sea-all.js",
+      "css/mui.min.css",
+      "js/mui/mui.js",
+      "js/module/function-list/function-list.js"
+    ],
+    "refer": [
+      "html/baidu-map/baidu-map.html"
+    ]
+  },
+  "html/baidu-map/baidu-map.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/seajs/sea-all.js",
+      "js/mui/mui.js",
+      "js/module/function-list/function-list.js",
+      "js/module/baidu-map/baidu-map.js",
+      "css/module/baidu-map/baidu-map.css",
+      "html/baidu-map/baidu-map-buttons.html"
+    ],
+    "refer": [
+      "html/baidu-map/baidu-map-buttons.html"
+    ]
+  },
+  "html/baidu-map/baidu-map-buttons.html": {
+    "resources": [
+      "css/module/baidu-map/baidu-map.css",
+      "js/module/baidu-map/baidu-map-buttons.js",
+      "js/mui/mui.js",
+      "js/seajs/sea-all.js",
+      "css/mui.min.css",
+      "js/module/baidu-map/baidu-map.js"
+    ]
+  }
 }

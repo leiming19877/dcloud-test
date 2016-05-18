@@ -15,17 +15,20 @@
 
 	</head>
 
-	<body>
-		<header class="mui-bar mui-bar-nav">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">地图定位</h1>
-		</header>
-		<div id="map">地图加载中...</div>
+	<body class="bg1">
+		
+		<div class="m-operation">
+			<button id="location-btn" type="button" class="mui-btn mui-btn-primary mui-btn-outlined">
+					定位
+			</button>
+		</div>
+		
 	</body>
+	
 	<script>
-	  	//加载主模板块
-	    seajs.use("module/baidu-map/baidu-map.js",function(baiduMap){
-	         window.baiduMap = baiduMap;
+	  		//加载主模板块
+	    seajs.use("module/baidu-map/baidu-map-buttons.js",function(){
+	      
 	    });
 	</script>
 	
