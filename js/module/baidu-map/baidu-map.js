@@ -3,29 +3,11 @@ define(function(require,module,exports){
 	var em = document.getElementById("map");
 	var map = null;
 
-	function createButtonsSubView(){
-		debugger;
-	    // 创建加载内容窗口
-	    var topoffset='44px';
-	    if(plus.navigator.isImmersedStatusbar()){// 兼容immersed状态栏模式
-	        topoffset=(Math.round(plus.navigator.getStatusbarHeight())+44)+'px';
-	    }
-	    var wsub=plus.webview.create('baidu-map-buttons.html','sub',{
-	    		top:topoffset,
-		    	height:'50px',
-		    	position:'absolute',
-		    	scrollIndicator:'none',
-		    	background:'transparent'
-	    	});
-	    var ws = plus.webview.currentWebview();
-	    ws.append(wsub);
-	}
 	//采用subpages创建子页面
 	m.init({
 			swipeBack:true, //启用右滑关闭功能
 			subpages:[{
 			      url:'baidu-map-buttons.html',
-			      //id:'baidu-map-buttons.html',
 			      styles:{
 			        top:'44px',
 			    	height:'50px',
@@ -40,31 +22,77 @@ define(function(require,module,exports){
 		  map = new plus.maps.Map("map",{
 		  	'position':'static'
 		  });
-		  //map.hide();
-		  var wvs  = window.plus.webview.all();
-		  for(var i=0; i < wvs.length; i++){
-		  	console.log(wvs[i].getURL());
-		  }	
+		  //切换到用户所在城市
+		  map.getUserLocation(function(state,pos){
+				if(0==state){
+					map.setCenter(pos);
+				}
+			});
+//		  var wvs  = window.plus.webview.all();
+//		  for(var i=0; i < wvs.length; i++){
+//		  	console.log(wvs[i].getURL());
+//		  }	
 	});
 	
 	function location(){
-		debugger;
-		plus.maps.Map.geocode("湘雅路87号",{city:"长沙"},function(event){
-		
-			var address = event.address;  // 转换后的地理位置
-				debugger;
-			var point = event.coord;  // 转换后的坐标信息
-			var coordType = event.coordType;	// 转换后的坐标系类型
-			map.setCenter(point);
-			alert("Coord:"+JSON.stringify(point)+"   "+coordType);
-		},function(e){
-			debugger;
-			alert("Failed:"+JSON.stringify(e));
-		});
-		
-		//map.showUserLocation(true);
+			map.showUserLocation( true );
+			map.getUserLocation(function(state,pos){
+				console.log("定位");
+				if(0==state){
+					map.setCenter(pos);
+					plus.nativeUI.toast("定位成功");
+				}else{
+					plus.nativeUI.toast("定位失败");
+				}
+			});
+	}
+	
+	function showUserPostion(){
+		plus.nativeUI.showWaiting("获取坐标中...");
+		map.getUserLocation(function(state,pos){
+			plus.nativeUI.closeWaiting();
+				if(0==state){
+					map.setCenter(pos);
+					var str = "经度："+pos.getLng();
+					str+="\n纬度："+pos.getLat();
+					plus.nativeUI.alert(str,function(){},"提示","确定")
+				}else{
+					plus.nativeUI.alert("定位失败",function(){},"提示","确定")
+				}
+			});
+	}
+	
+	function showUserAddress() {
+		console.log("显示地址");
+		plus.nativeUI.showWaiting("定位中...");
+		var startDate = new Date();
+		plus.geolocation.getCurrentPosition(function(p) {
+			plus.nativeUI.closeWaiting();
+			var endDate = new Date();
+			console.log("显示地址成功,耗时时长（ms）："+(endDate.getTime() - startDate.getTime()));
+			var str="坐标类型："+p.coordsType;
+			str+="\n经度："+p.coords.longitude;
+			str+="\n纬度："+p.coords.latitude;
+			if(p.addresses){
+				str+="\n地址："+p.addresses;
+			}else{
+				str+="\n地址：定位获取失败";
+			}
+			plus.nativeUI.alert(str,function(){},"提示","确定")
+		}, function(e) {
+			 plus.nativeUI.closeWaiting();
+			 console.log("失败");
+			 plus.nativeUI.alert("定位失败",function(){},"提示","确定")
+		},{ 
+			enableHighAccuracy:true,
+			timeout:10000,
+			maximumAge:2000,
+			provider:'baidu'
+			});
 	}
 	return  {
-		'location':location
+		'location':location,
+		'showUserPostion':showUserPostion,
+		'showUserAddress':showUserAddress
 	}
 });
