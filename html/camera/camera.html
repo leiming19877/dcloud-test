@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拍照上传</title>
+			<!--标准mui.css-->
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<script type="text/javascript" id="seajsnode" src="../../js/seajs/sea-all.js"></script>
+		<script>
+			    //加载本模块样式
+    			seajs.use("../../css/module/camera/camera.css");
+		</script>
+	</head>
+	<body>
+	<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">拍照上传</h1>
+		</header>
+		<div id="dcontent" class="mui-content">
+			<button></button>
+			<div class="button" onclick="getImage();">拍照</div>
+			<div class="button" onclick="getVideo();">录像</div>
+			<br/>
+			<!-- History list -->
+			<ul id="history" class="dlist" style="text-align:left;">
+				<li id="empty" class="ditem-empty">无历史记录</li>
+			</ul>
+			<br/>
+			<div class="button button-waring" onclick="cleanHistory();">清空历史记录</div>
+			<br/>
+		</div>
+		<div id="output">
+Camera管理摄像头设备，可用于拍摄照片、录制视频文件。
+		</div>
+	</body>
+	<script>
+	  	//加载主模板块
+	    seajs.use("module/camera/camera.js",function(){
+
+	    });
+	</script>
+	
+</html>
