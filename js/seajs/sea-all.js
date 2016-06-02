@@ -338,9 +338,8 @@ else {
       // see http://msdn.microsoft.com/en-us/library/ms536429(VS.85).aspx
       node.getAttribute("src", 4)
   }
-
   loaderPath = getScriptAbsoluteSrc(loaderScript)
-  //替换到seajs路径为空，以方便定位
+  //替换到seajs路径为空，以方便定位上seajs上一级目录
   loaderPath = loaderPath.replace(/\/seajs/,'')
   // When `sea.js` is inline, set loaderDir to current working directory
   loaderDir = dirname(loaderPath || cwd)
@@ -1164,6 +1163,7 @@ data.charset = "utf-8"
 // data.debug - Debug mode. The default value is false
 
 seajs.config = function(configData) {
+
   for (var key in configData) {
     var curr = configData[key]
     var prev = data[key]
@@ -1204,10 +1204,11 @@ seajs.config = function(configData) {
 		  return
 		}
 	 var seajs  = global.seajs;
-	 seajs.config({
-	         alias: { 
+	  seajs.config({
+	        alias: { 
 	            'zepto': 'zepto/zepto.min.js',
-	            'mui':'mui/mui.js'
+	            'mui':'mui/mui.js',
+	            'vue':'vue/vue-1.0.24.js'
 	            },
 	        preload: [
 	                 ],//预先加载
@@ -1220,7 +1221,7 @@ seajs.config = function(configData) {
 	   //基础路径
 	   var userAgent = navigator.userAgent;
 	   if(userAgent.indexOf("Html5Plus")  !== -1 ){
-	   	 //seajs.config({base: 'www/js'});
+	   	 seajs.config({base: '../www/js'});
 	   }else{
 	   	  seajs.config({base:'/dcloud-test/js'}); 
 	   }

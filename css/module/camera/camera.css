@@ -1,0 +1,3 @@
+.m-pictures{position: relative;}
+.m-pictures .empty-tip{position: absolute; display: none;top: 50%;left:0;text-align: center;transform: translateY(-50%); }
+.m-pictures.empty .empty-tip{display: block;}

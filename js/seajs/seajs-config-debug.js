@@ -7,7 +7,8 @@
 	  seajs.config({
 	        alias: { 
 	            'zepto': 'zepto/zepto.min.js',
-	            'mui':'mui/mui.js'
+	            'mui':'mui/mui.js',
+	            'vue':'vue/vue-1.0.24.js'
 	            },
 	        preload: [
 	                 ],//预先加载
