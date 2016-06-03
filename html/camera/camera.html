@@ -20,21 +20,23 @@
 		</header>
 		<div id="dcontent" class="mui-content">
 			<div class="mui-content-padded">
-				<button class="mui-btn mui-btn-primary mui-btn-block">拍照</button>
-				<div class="m-pictures">
+				<button id="caputre-btn" class="mui-btn mui-btn-primary mui-btn-block">拍照</button>
+				<div class="m-pictures" v-bind:class="{ 'empty': entries.length}" id="pictures">
 					<div class="empty">无历史记录</div>
 					<!-- History list -->
 					<ul id="picture-list" class="list">
-						
+					  <!--	<li v-for="e in entries">
+							<img class="thumbnail" v-bind:src="e.toLocalURL()" />
+							<span>{{e.name}}</span>
+							<span></span>
+						</li>-->
+						<pictures-component v-bind:entries.sync="entries"></pictures-component>
 					</ul>
 				</div>
-				
-				<button class="mui-btn mui-btn-primary mui-btn-block">清空历史记录</button>
+
+				<button id="clear-pictures-btn" class="mui-btn mui-btn-primary mui-btn-block">清空历史记录</button>
 			</div>
 			<!-- end mui-content-padded -->
-		</div>
-		<div id="output">
-			Camera管理摄像头设备，可用于拍摄照片、录制视频文件。
 		</div>
 	</body>
 	<script>

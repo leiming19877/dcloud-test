@@ -1221,7 +1221,7 @@ seajs.config = function(configData) {
 	   //基础路径
 	   var userAgent = navigator.userAgent;
 	   if(userAgent.indexOf("Html5Plus")  !== -1 ){
-	   	 seajs.config({base: '../www/js'});
+	   	 //seajs.config({base: '../www/js'});
 	   }else{
 	   	  seajs.config({base:'/dcloud-test/js'}); 
 	   }

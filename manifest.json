@@ -253,7 +253,8 @@
 					"js/seajs/sea-all.js",
 					"css/mui.min.css",
 					"js/mui/mui.js",
-					"js/module/function-list/function-list.js"
+					"js/module/function-list/function-list.js",
+					"html/camera/camera.html"
 				],
 				"refer": [],
 				"priority": 0
@@ -280,6 +281,20 @@
 					"js/seajs/sea-all.js",
 					"css/mui.min.css",
 					"js/module/baidu-map/baidu-map.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/camera/camera.html": {
+				"resources": [
+					"css/module/camera/camera.css",
+					"js/seajs/sea-all.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/module/camera/camera.js",
+					"js/vue/vue-1.0.24.js",
+					"js/mui/mui.js",
+					"js/module/camera/list-pictures.html"
 				],
 				"refer": [],
 				"priority": 0
