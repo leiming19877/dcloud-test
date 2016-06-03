@@ -21,8 +21,8 @@
 		<div id="dcontent" class="mui-content">
 			<div class="mui-content-padded">
 				<button id="caputre-btn" class="mui-btn mui-btn-primary mui-btn-block">拍照</button>
-				<div class="m-pictures" v-bind:class="{ 'empty': entries.length}" id="pictures">
-					<div class="empty">无历史记录</div>
+				<div class="m-pictures" v-bind:class="[entries.length>0?'':'empty']" id="pictures">
+					<div class="empty-tip">无历史记录</div>
 					<!-- History list -->
 					<ul id="picture-list" class="list">
 					  <!--	<li v-for="e in entries">
@@ -34,7 +34,7 @@
 					</ul>
 				</div>
 
-				<button id="clear-pictures-btn" class="mui-btn mui-btn-primary mui-btn-block">清空历史记录</button>
+				<button id="clear-pictures-btn" class="mui-btn mui-btn-primary mui-btn-block">清空拍照记录</button>
 			</div>
 			<!-- end mui-content-padded -->
 		</div>

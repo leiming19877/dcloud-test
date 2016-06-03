@@ -1,4 +1,4 @@
-.m-pictures{position: relative;}
+.m-pictures{position: relative;min-height: 80px;}
 .m-pictures .empty-tip{position: absolute; display: none;top: 50%;left:0;text-align: center;transform: translateY(-50%); }
 .m-pictures .thumbnail{width: 50px;height: 50px;}
 
