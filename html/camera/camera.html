@@ -21,6 +21,7 @@
 		<div id="dcontent" class="mui-content">
 			<div class="mui-content-padded">
 				<button id="caputre-btn" class="mui-btn mui-btn-primary mui-btn-block">拍照</button>
+				<button id="gallery-btn" class="mui-btn mui-btn-primary mui-btn-block">相册选择照片</button>
 				<div class="m-pictures" v-bind:class="[entries.length>0?'':'empty']" id="pictures">
 					<div class="empty-tip">无历史记录</div>
 					<!-- History list -->
@@ -33,7 +34,7 @@
 						<pictures-component v-bind:entries.sync="entries"></pictures-component>
 					</ul>
 				</div>
-
+				<button id="upload-pictures-btn" class="mui-btn mui-btn-primary mui-btn-block">上传照片</button>
 				<button id="clear-pictures-btn" class="mui-btn mui-btn-primary mui-btn-block">清空拍照记录</button>
 			</div>
 			<!-- end mui-content-padded -->
