@@ -10,7 +10,9 @@ define(function(require, module, exports) {
 
 	// H5 plus事件处理
 	function plusReady() {
-		var loadingWin = plus.nativeUI.showWaiting("加载中...");
+		var loadingWin = plus.nativeUI.showWaiting("加载中...", {
+			back: 'none'
+		});
 		// 获取摄像头目录对象
 		plus.io.resolveLocalFileSystemURL("_doc/", function(entry) {
 			entry.getDirectory("camera", {
@@ -24,7 +26,7 @@ define(function(require, module, exports) {
 						loadingWin.close();
 					}, 2000);
 				}, function(e) {
-					m.alert("读取录音列表失败：" + e.message);
+					m.alert("读取照片表失败：" + e.message);
 				});
 			}, function(e) {
 				m.alert(e.message);
@@ -32,9 +34,13 @@ define(function(require, module, exports) {
 		}, function(e) {
 			alert(e.message);
 		});
+	
+		/*m.back = function(){
+			alert("BackButton Key pressed!");
+		};*/	
 	}
 	m.plusReady(plusReady);
-
+	
 	var listPicturesTpl = require("./list-pictures.html");
 
 	vue.filter('imageUrl', function(e) {
@@ -79,7 +85,8 @@ define(function(require, module, exports) {
 				m.alert("读取拍照文件错误：" + e.message);
 			});
 		}, function(e) {
-			m.alert("失败：" + e.message);
+			//没有拍时就不提示什么了
+			//m.alert("失败：" + e.message);
 		}, {
 			filename: "_doc/camera/",
 			index: 1
@@ -126,7 +133,9 @@ define(function(require, module, exports) {
 			return;
 		}
 		var url = "http://192.168.1.103:8080/html5/UploaderServlet";
-		var wt = plus.nativeUI.showWaiting("上传中...");
+		var wt = plus.nativeUI.showWaiting("上传中..." ,{
+			back: 'none'
+		});
 		var task = plus.uploader.createUpload(url, {
 				method: "POST"
 			},
@@ -139,7 +148,6 @@ define(function(require, module, exports) {
 				}
 			}
 		);
-		task.addData("client", "HelloH5+");
 		task.addData("uid", getUid());
 		for (var i = 0; i < pictures.entries.length; i++) {
 			var f = pictures.entries[i];
@@ -153,15 +161,32 @@ define(function(require, module, exports) {
 	function getUid() {
 		return Math.floor(Math.random() * 100000000 + 10000000).toString();
 	}
+	//回退前阻止
+	m.options.beforeback = function(){
+			alert("BackButton Key pressed!");
+			return false;
+	};
 	document.getElementById("caputre-btn").addEventListener("click", capurteImage, false);
 	document.getElementById("gallery-btn").addEventListener("click", pickGallery, false);
 	document.getElementById("upload-pictures-btn").addEventListener("click", upload, false);
 	document.getElementById("clear-pictures-btn").addEventListener("click", function() {
-		gentry.removeRecursively(function(et) {
-				pictures.entries = new Array();
-			},
-			function(e) {
-				m.alert("失败：" + e.message);
-			});
+		if (pictures.entries.length > 0) {
+			pictures.entries = new Array();
+		}
+		gentry.getMetadata(function(mtadata) {
+			if (mtadata.fileCount > 0) {
+				//删除_doc/camera目录下所有照片
+				gentry.removeRecursively(function(et) {
+
+					},
+					function(e) {
+						m.alert("清空失败失败原因" + e.message);
+					});
+			}
+		}, function(e) {
+
+		}, false);
+
 	}, false);
+	//end eventListener
 });
