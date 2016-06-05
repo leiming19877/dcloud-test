@@ -61,8 +61,8 @@ define(function(require, module, exports) {
 					scrollIndicator: 'none',
 					scalable: true,
 					bounce: "all"
-				},{
-					'imageUrl':imageUrl
+				}, {
+					'imageUrl': imageUrl
 				});
 				/*w.addEventListener("loaded", function() {
 					w.evalJS("loadMedia('" + li.entry.toLocalURL() + "')");
@@ -133,9 +133,9 @@ define(function(require, module, exports) {
 			}
 
 		}, {
-			filename: '_doc/camera/',
 			filter: 'image',
 			multiple: true,
+			filename: '_doc/camera/',
 			maximum: 3,
 			system: false,
 			//selected:lfs,
