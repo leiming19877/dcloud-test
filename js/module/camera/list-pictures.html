@@ -1,5 +1,5 @@
 <li v-for="e in entries">
-	<img class="thumbnail" v-bind:src="e.toLocalURL()" />
+	<img class="thumbnail" v-on:click="previewImage(e)" v-bind:src="e.toLocalURL()" />
 	<span>{{e.name}}</span>
 	<i  v-on:click="removePicture(e)" class="mui-icon mui-icon-trash" style="color: #007aff;"></i>
 </li>

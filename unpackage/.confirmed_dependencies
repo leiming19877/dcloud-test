@@ -74,6 +74,18 @@
 			"js/mui/mui.js",
 			"js/module/camera/list-pictures.html"
 		],
-		"refer": []
+		"refer": [
+			"html/camera/image-preview.html"
+		]
+	},
+	"html/camera/image-preview.html": {
+		"resources": [
+			"js/module/camera/image-preview.js",
+			"js/mui/mui.js",
+			"css/module/camera/camera.css",
+			"js/seajs/sea-all.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		]
 	}
 }

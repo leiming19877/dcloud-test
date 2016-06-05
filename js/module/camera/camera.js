@@ -34,13 +34,13 @@ define(function(require, module, exports) {
 		}, function(e) {
 			alert(e.message);
 		});
-	
+
 		/*m.back = function(){
 			alert("BackButton Key pressed!");
-		};*/	
+		};*/
 	}
 	m.plusReady(plusReady);
-	
+
 	var listPicturesTpl = require("./list-pictures.html");
 
 	vue.filter('imageUrl', function(e) {
@@ -53,6 +53,24 @@ define(function(require, module, exports) {
 		props: ['entries'],
 		template: listPicturesTpl,
 		methods: {
+			previewImage: function(e) {
+				var url = "image-preview.html";
+				var imageUrl = e.toLocalURL();
+				var view = plus.webview.create(url, url, {
+					hardwareAccelerated: true,
+					scrollIndicator: 'none',
+					scalable: true,
+					bounce: "all"
+				},{
+					'imageUrl':imageUrl
+				});
+				/*w.addEventListener("loaded", function() {
+					w.evalJS("loadMedia('" + li.entry.toLocalURL() + "')");
+					//w.evalJS( "loadMedia(\""+"http://localhost:13131/_doc/camera/"+name+"\")" );
+				}, false);
+			*/
+				view.show("pop-in");
+			},
 			removePicture: function(e) {
 				var self = this;
 				e.remove(function(entry) {
@@ -133,7 +151,7 @@ define(function(require, module, exports) {
 			return;
 		}
 		var url = "http://192.168.1.103:8080/html5/UploaderServlet";
-		var wt = plus.nativeUI.showWaiting("上传中..." ,{
+		var wt = plus.nativeUI.showWaiting("上传中...", {
 			back: 'none'
 		});
 		var task = plus.uploader.createUpload(url, {
@@ -162,10 +180,11 @@ define(function(require, module, exports) {
 		return Math.floor(Math.random() * 100000000 + 10000000).toString();
 	}
 	//回退前阻止
-	m.options.beforeback = function(){
-			alert("BackButton Key pressed!");
-			return false;
+	m.options.beforeback = function() {
+		alert("BackButton Key pressed!");
+		return false;
 	};
+
 	document.getElementById("caputre-btn").addEventListener("click", capurteImage, false);
 	document.getElementById("gallery-btn").addEventListener("click", pickGallery, false);
 	document.getElementById("upload-pictures-btn").addEventListener("click", upload, false);
