@@ -6,11 +6,11 @@
 		<title></title>
 		<title>Map Example</title>
 			<!--标准mui.css-->
-		<link rel="stylesheet" href="../../css/mui.min.css">
-		<script type="text/javascript" id="seajsnode" src="../../js/seajs/sea-all.js"></script>
+		<link rel="stylesheet" href="../../../css/mui.min.css">
+		<script type="text/javascript" id="seajsnode" src="../../../js/seajs/sea-all.js"></script>
 		<script>
 			    //加载本模块样式
-    			seajs.use("../../css/module/baidu-map/baidu-map.css");
+    			seajs.use("../css/baidu-map.css");
 		</script>
 
 	</head>
@@ -24,7 +24,7 @@
 	</body>
 	<script>
 	  	//加载主模板块
-	    seajs.use("module/baidu-map/baidu-map.js",function(baiduMap){
+	    seajs.use("../js/baidu-map.js",function(baiduMap){
 	         window.baiduMap = baiduMap;
 	    });
 	</script>

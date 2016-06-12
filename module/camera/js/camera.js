@@ -73,10 +73,11 @@ define(function(require, module, exports) {
 			},
 			removePicture: function(e) {
 				var self = this;
+				self.entries.$remove(e);
 				e.remove(function(entry) {
-					self.entries.$remove(e);
+					
 				}, function(e) {
-					m.alert("删除失败，失败原因：" + e.message);
+					//m.alert("删除失败，失败原因：" + e.message);
 				});
 			}
 		}
@@ -150,12 +151,13 @@ define(function(require, module, exports) {
 			plus.nativeUI.alert("没有添加上传文件！");
 			return;
 		}
-		var url = "http://192.168.1.103:8080/html5/UploaderServlet";
+		var url = "http://10.10.11.163:8081/html5/UploaderServlet";
 		var wt = plus.nativeUI.showWaiting("上传中...", {
 			back: 'none'
 		});
 		var task = plus.uploader.createUpload(url, {
-				method: "POST"
+				method: "POST",
+				timeout:0
 			},
 			function(t, status) { //上传完成
 				wt.close();
@@ -180,10 +182,10 @@ define(function(require, module, exports) {
 		return Math.floor(Math.random() * 100000000 + 10000000).toString();
 	}
 	//回退前阻止
-	m.options.beforeback = function() {
+/*	m.options.beforeback = function() {
 		alert("BackButton Key pressed!");
 		return false;
-	};
+	};*/
 
 	document.getElementById("caputre-btn").addEventListener("click", capurteImage, false);
 	document.getElementById("gallery-btn").addEventListener("click", pickGallery, false);

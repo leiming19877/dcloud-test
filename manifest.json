@@ -234,7 +234,8 @@
 					"js/mui/mui.js",
 					"fonts/mui.ttf",
 					"html/function-list.html",
-					"html/function-list/function-list.html"
+					"html/function-list/function-list.html",
+					"module/function-list/html/function-list.html"
 				],
 				"refer": [],
 				"priority": 0
@@ -309,6 +310,38 @@
 					"js/seajs/sea-all.js",
 					"fonts/mui.ttf",
 					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"module/function-list/html/function-list.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/mui/mui.js",
+					"js/module/function-list/function-list.js",
+					"js/seajs/sea-all.js"
+				],
+				"refer": [
+					"module/baidu-map/html/baidu-map.html"
+				],
+				"priority": 0
+			},
+			"module/baidu-map/html/baidu-map-buttons.html": {
+				"resources": [
+					"module/baidu-map/css/baidu-map.css",
+					"js/mui/mui.js",
+					"module/baidu-map/js/baidu-map-buttons.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"module/baidu-map/html/baidu-map.html": {
+				"resources": [
+					"module/baidu-map/html/baidu-map-buttons.html",
+					"module/baidu-map/js/baidu-map.js",
+					"module/baidu-map/css/baidu-map.css",
+					"js/mui/mui.js"
 				],
 				"refer": [],
 				"priority": 0

@@ -86,7 +86,7 @@ define(function(require,module,exports){
 		},{ 
 			enableHighAccuracy:true,
 			timeout:10000,
-			maximumAge:2000,
+			maximumAge:1000,
 			provider:'baidu'
 			});
 	}
