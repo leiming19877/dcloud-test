@@ -323,7 +323,8 @@
 					"js/seajs/sea-all.js"
 				],
 				"refer": [
-					"module/baidu-map/html/baidu-map.html"
+					"module/baidu-map/html/baidu-map.html",
+					"module/camera/html/camera.html"
 				],
 				"priority": 0
 			},
@@ -341,7 +342,35 @@
 					"module/baidu-map/html/baidu-map-buttons.html",
 					"module/baidu-map/js/baidu-map.js",
 					"module/baidu-map/css/baidu-map.css",
-					"js/mui/mui.js"
+					"js/mui/mui.js",
+					"js/seajs/sea-all.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"module/camera/html/camera.html": {
+				"resources": [
+					"module/camera/js/camera.js",
+					"js/seajs/sea-all.js",
+					"fonts/mui.ttf",
+					"module/camera/css/camera.css",
+					"css/mui.min.css",
+					"js/vue/vue-1.0.24.js",
+					"js/mui/mui.js",
+					"module/camera/js/list-pictures.html"
+				],
+				"refer": [
+					"module/camera/html/image-preview.html"
+				],
+				"priority": 0
+			},
+			"module/camera/html/image-preview.html": {
+				"resources": [
+					"module/camera/css/camera.css",
+					"js/mui/mui.js",
+					"module/camera/js/image-preview.js"
 				],
 				"refer": [],
 				"priority": 0
