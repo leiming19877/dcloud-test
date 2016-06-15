@@ -43,11 +43,7 @@ define(function(require, module, exports) {
 
 	var listPicturesTpl = require("./list-pictures.html");
 
-	vue.filter('imageUrl', function(e) {
-			debugger;
-			return e.toLocalURL();
-		})
-		// 定义
+	// 定义
 	var picturesComponent = vue.extend({
 		// 声明 props
 		props: ['entries'],
